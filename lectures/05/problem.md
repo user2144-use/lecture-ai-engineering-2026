@@ -54,7 +54,7 @@ APIキーは第1回と同じ環境変数`GEMINI_API_KEY`を使います。Codesp
 まず、同じターミナルで比較用の質問を変数に入れます。以下の各方式では、この質問をそのまま使います。
 
 ```bash
-AIE_QUESTION='第2回の説明では、LoRAは何を固定し何を学習しますか？ QLoRAは何を加えますか？'
+AIE_QUESTION='RAGとは何ですか'
 uv run python -m app.agent --full-context --trace "$AIE_QUESTION"
 ```
 
@@ -65,12 +65,12 @@ uv run python -m app.agent --full-context --trace "$AIE_QUESTION"
 ### STEP 2：検索結果だけを確認する
 
 ```bash
-uv run python -m app.retrieval "LoRA QLoRA 違い"
+uv run python -m app.retrieval "$AIE_QUESTION"
 ```
 
 エージェントを使わず、質問に近いページを最大5件取得します。講義名・章・ページタイトル・PDFページ番号・本文が表示されます。
 
-- 第2回・PDF p.52など、質問への答えを支えるページが含まれていますか
+- 質問への答えを支えるページが含まれていますか
 - 単に似た用語が出ているページと、答えの根拠になるページを区別できますか
 
 教材JSONをエディタで開き、たとえば`lec02-main-p052`を探すと、該当ページの本文を確認できます。
